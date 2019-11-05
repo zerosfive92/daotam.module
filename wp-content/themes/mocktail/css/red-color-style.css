@@ -1,0 +1,107 @@
+/*
+Theme Name: Mocktail
+Description: Used to style to change theme color.
+*/
+
+/* Nav, links and hover */
+
+a,
+ul li a:hover,
+ol li a:hover,
+.main-navigation a:hover, /* Navigation */
+.main-navigation ul li.current-menu-item a,
+.main-navigation ul li.current_page_ancestor a,
+.main-navigation ul li.current-menu-ancestor a,
+.main-navigation ul li.current_page_item a,
+.main-navigation ul li:hover > a,
+.main-navigation li.current-menu-ancestor.menu-item-has-children > a:after,
+.main-navigation li.current-menu-item.menu-item-has-children > a:after,
+.main-navigation ul li:hover > a:after,
+.main-navigation li.menu-item-has-children > a:hover:after,
+.main-navigation li.page_item_has_children > a:hover:after,
+.main-navigation ul li ul li a:hover,
+.main-navigation ul li ul li:hover > a,
+.main-navigation ul li.current-menu-item ul li a:hover,
+.side-menu-wrap .side-nav-wrap a:hover, /* Side Menu */
+.entry-title a:hover, /* Post */
+.entry-title a:focus,
+.entry-title a:active,
+.entry-meta a:hover,
+.image-navigation .nav-links a,
+.widget ul li a:hover, /* Widgets */
+.widget-title a:hover,
+.widget_contact ul li a:hover,
+.site-info .copyright a:hover, /* Footer */
+#colophon .widget ul li a:hover {
+	color: #f9556d;
+}
+
+.widget-title:after,
+.our-feature-box-header .feature-box-title:after {
+	background-color: #f9556d;
+}
+
+/* Mocktail Added colorstyle  */
+.mocktail-color .entry-format a, 
+.mocktail-color .cat-links ul li, 
+.mocktail-color .tag-links a {
+	border-bottom: 1px solid #f9556d;
+}
+
+/* Webkit */
+::selection {
+	background: #f9556d;
+	color: #fff;
+}
+
+/* Gecko/Mozilla */
+::-moz-selection {
+	background: #f9556d;
+	color: #fff;
+}
+
+/* Accessibility
+================================================== */
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	color: #f9556d;
+}
+
+/* Default Buttons
+================================================== */
+input[type="reset"],/* Forms  */
+input[type="button"],
+input[type="submit"] {
+	background-color: #f9556d;
+}
+
+/* #bbpress
+================================================== */
+#bbpress-forums .bbp-topics a:hover {
+	color: #f9556d;
+}
+
+.bbp-submit-wrapper button.submit {
+	background-color: #f9556d;
+	border: 1px solid #f9556d;
+}
+
+/* Woocommerce
+================================================== */
+.woocommerce #respond input#submit,
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button,
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt,
+.woocommerce-demo-store p.demo_store {
+	background-color: #f9556d;
+}
+
+.woocommerce .woocommerce-message:before {
+	color: #f9556d;
+}

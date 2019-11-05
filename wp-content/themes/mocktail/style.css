@@ -1,0 +1,223 @@
+/*
+Theme Name:Mocktail
+Theme URI: https://themefreesia.com/themes/mocktail
+Author: Theme Freesia
+Author URI: https://themefreesia.com
+Description: Mocktail is a WordPress Child theme exclusively built for blogger, news and education. It is clean, super flexible, fully responsive designs, amazing new features, complete 1-click website demos and lifetime free updates. Mocktail design can be used for any type of website. It consists Contact Us Template and Gallery Template, Popular Posts widgets and Sidebar. Get free support at https://tickets.themefreesia.com/ and View free demo sites at https://demo.themefreesia.com/mocktail.
+Version: 1.0.3
+Text Domain: mocktail
+Template: cocktail
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+Tags: threaded-comments, right-sidebar, custom-background, custom-header, custom-logo, custom-menu, editor-style, featured-images, flexible-header, post-formats, sticky-post, theme-options, translation-ready, blog, news, education
+
+All files, unless otherwise stated, are released under the GNU General Public License
+version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
+==================================================
+*/
+body,
+button,
+input,
+select,
+textarea {
+	color: #555;
+	font-size: 16px; /* sizes= 21px to 11px */
+}
+
+#search-box .search-form {
+	border: 1px solid #ccc;
+}
+
+.entry-title {
+	font-size: 26px;
+}
+
+.post-image-content {
+	width: 100%;
+	margin-right: 0;
+	float: none;
+}
+
+#site-navigation {
+	width: 90%;
+	margin: 0 auto;
+	background-color: #333;
+}
+
+.is-sticky #site-navigation {
+	background-color: transparent;
+}
+
+.is-sticky #sticky-header {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Navigation */
+.main-navigation a,
+.main-navigation li.menu-item-has-children > a:after,
+.main-navigation li.page_item_has_children > a:after,
+.main-navigation li.menu-item-has-children > a:after,
+.main-navigation li li.menu-item-has-children > a:after,
+.main-navigation li.page_item_has_children > a:after,
+.main-navigation li li.page_item_has_children > a:after {
+	color: #fff;
+}
+
+.custom-header {
+	width: 90%;
+	margin: 50px auto 0;
+}
+
+.header-image-title {
+	font-weight: 600;
+}
+
+.header-image-title {
+	background-color: rgba(0,0,0,0.1);
+	padding: 8px 26px;
+	width: auto;
+	border: 3px solid #fff;
+}
+
+#secondary .widget-title {
+	background-color: #F4F4F4;
+	color: #555;
+	border: none;
+	text-align: center;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.widget-title:after {
+	height: 2px;
+	width: 100%;
+}
+
+.feature-content {
+	bottom: auto;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+.our-feature-box .feature-content-wrap:hover .feature-content {
+	bottom: auto;
+}
+
+.our-feature-box .feature-content-wrap:hover .feature-icon::before {
+	border-width: 0;
+	border-color: rgba(255,255,255,0.5);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.tag-links a, 
+.entry-format a {
+	background-color: transparent;
+	color: #666;
+	padding: 1px 10px;
+}
+
+.cat-links a {
+	border: none;
+	color: #666;
+}
+
+.cat-links a, .tag-links a, .entry-format a {
+	font-size: 11px;
+	padding: 0 5px;
+}
+
+.entry-format a, .cat-links ul li, .tag-links a {
+	border-top: 1px solid #f4f4f4;
+	border-left: 1px solid #f4f4f4;
+	border-right: 1px solid #f4f4f4;
+	background-color: #f4f4f4;
+}
+
+.cat-links ul li {
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.entry-format a {
+	margin: 0;
+}
+
+.cat-links a {
+	margin-bottom: 0;
+}
+
+.our-feature-box-header .feature-box-title:after {
+	content: "";
+	display: block;
+	width: 20px;
+	height: 2px;
+	margin: 25px auto 0;
+}
+
+.our-feature-box-header {
+	margin-bottom: 40px;
+}
+
+.feature-box-description {
+	font-size: 15px;
+}
+
+.feature-post-img:before {
+	border-radius: 20px;
+	content: "";
+	padding: 10px;
+	border: 1px solid rgba(255,255,255,0.2);
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 10px;
+	bottom: 10px;
+	-webkit-transition: all 0.3s ease-in 0s;
+	-moz-transition: all 0.3s ease-in 0s;
+	-o-transition: all 0.3s ease-in 0s;
+	-ms-transition: all 0.3s ease-in 0s;
+	transition: all 0.3s ease-in 0s;
+}
+
+.feature-post-img {
+	display: block;
+	position: relative;
+}
+
+.feature-post-img img {
+	border-radius: 20px;
+}
+
+.site-info .social-links a {
+	background-color: #999;
+	color: #FFF;
+	border-radius: 5px;
+}
+
+.go-to-top .icon-bg {
+	background-color: #777;
+	border-radius: 20px;
+}
+
+.line-bar, 
+.line-bar:after, 
+.line-bar:before {
+	background-color: #fff;
+}
+
+@media only screen and (max-width: 980px) { 
+	.is-sticky #site-navigation {
+		background-color: #333;
+	}
+}
+
+@media only screen and (max-width: 767px) { 
+	.mocktail-color .header-image-title {
+		border: 2px solid #fff;
+		font-size: 16px;
+	}
+}
