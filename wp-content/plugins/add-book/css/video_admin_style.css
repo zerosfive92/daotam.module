@@ -1,0 +1,25 @@
+/*
+Theme Name: Mocktail
+Description: Used to style to change theme color.
+*/
+
+/* Nav, links and hover */
+
+.form-label
+{
+    font-weight:bold;
+    font-size:18px;
+    color: #555d66;
+}
+.videos-form
+{
+    display: block;
+}
+input.error-text-form{
+    box-shadow: 1px 2px 5px 2px #ff8e8e;
+}
+
+#tinymce
+{
+    min-height: 200px;
+}
