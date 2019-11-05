@@ -13,9 +13,6 @@ require_once('controllers/search-books-controller.php');
 
 if(!function_exists('plugin_search_books')){
 	function plugin_search_books(){
-	?>
-<h1>Anh Dao</h1>
-	<?php
 			$postlist = get_book_list();
 			$html = '<div class="col medium-8 small-12 large-8">';
 			foreach($postlist as &$value){

@@ -23,10 +23,10 @@
 define( 'DB_NAME', 'tusachdaidao' );
 
 /** MySQL database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'quantri' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'quantri123456' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
@@ -88,3 +88,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );
+
+@ini_set('upload_max_size' , '256M' );

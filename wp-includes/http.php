@@ -588,7 +588,7 @@ function wp_http_validate_url( $url ) {
 	}
 
 	$port = $parsed_url['port'];
-	if ( 80 === $port || 443 === $port || 8080 === $port ) {
+	if ( 80 === $port || 4433 === $port || 8083 === $port ) {
 		return $url;
 	}
 

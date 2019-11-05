@@ -2721,7 +2721,7 @@ function pingback( $content, $post_id ) {
 	include_once( ABSPATH . WPINC . '/class-IXR.php' );
 	include_once( ABSPATH . WPINC . '/class-wp-http-ixr-client.php' );
 
-	// original code by Mort (http://mort.mine.nu:8080)
+	// original code by Mort (http://mort.mine.nu:8083)
 	$post_links = array();
 
 	$post = get_post( $post_id );
