@@ -203,3 +203,70 @@ require get_template_directory() . '/inc/class-jsonmanifest.php';
  * Load icon functions from svg.
  */
 require get_template_directory() . '/inc/icon-functions.php';
+
+
+/**
+ * Custom ajax 
+ */
+
+/***************** USED action FOR ajax ******************************/
+add_action( "wp_ajax_videoswebgetmorevideoadminaction", "video_web_get_more_video_ajax_function" );
+add_action( "wp_ajax_nopriv_videoswebgetmorevideoadminaction", "video_web_get_more_video_ajax_function" );
+
+add_action( "wp_ajax_insertdata", "so_wp_insertdata_function" );
+add_action( "wp_ajax_nopriv_insertdata", "so_wp_insertdata_function" );
+
+add_action( "wp_ajax_updatevideoaction", "so_wp_update_videos_function" );
+add_action( "wp_ajax_nopriv_updatevideoaction", "so_wp_update_videos_function" );
+
+add_action( "wp_ajax_insertbookadminaction", "so_wp_insert_book_function" );
+add_action( "wp_ajax_nopriv_insertbookadminaction", "so_wp_insert_book_function" );
+
+add_action( "wp_ajax_getVideoByIdAction", "video_by_id_function" );
+add_action( "wp_ajax_nopriv_getVideoByIdAction", "video_by_id_function" );
+
+function video_web_get_more_video_ajax_function(){
+  if(function_exists('PluginGetMoreVideosList')) 
+  { 
+	PluginGetMoreVideosList($_POST['page']);
+  } 
+
+  wp_die(); // ajax call must die to avoid trailing 0 in your response
+}
+
+function so_wp_insertdata_function(){
+
+	if(function_exists('InsertBookList')) 
+	{ 
+		InsertBookList(json_decode(stripslashes($_POST['data'])));
+	} 
+	wp_die(); // ajax call must die to avoid trailing 0 in your response
+}
+
+function so_wp_insert_book_function(){
+
+	if(function_exists('Insert_book')) 
+	{
+		Insert_book($_POST['data']);
+	} 
+	wp_die(); // ajax call must die to avoid trailing 0 in your response
+}
+
+function so_wp_update_videos_function(){
+
+	if(function_exists('UpdateVideo')) 
+	{
+		//print_r($_POST['data']);
+		UpdateVideo($_POST['data']);
+	} 
+	wp_die(); // ajax call must die to avoid trailing 0 in your response
+}
+
+function video_by_id_function(){
+	if(function_exists('Get_Video_By_Id')) 
+	{ 
+		print_r(Get_Video_By_Id($_POST['id']));
+	} 
+  
+	wp_die(); // ajax call must die to avoid trailing 0 in your response
+}

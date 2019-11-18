@@ -10,20 +10,41 @@ jQuery(document).ready( function(jQuery){
       });*/
   });
 
-  function getVideoInfo(){
-      if(IsValidate_Insert_Video_Form()){
-        var pDescription = tinymce.activeEditor.getContent();
-        var pTitle = $('#videotitle').val();
-        var pUrl = $('#videourl').val();
+  function getBookInfo(){
+      if(IsValidate_Insert_Book_Form()){
+        var pContent = tinymce.activeEditor.getContent();
+        var pTitle = $('#booktitle').val();
+        var pAuthorId = $('#author option:selected').val();
+        var pAuthorName = $('#author option:selected').text();
+        var pCateId = $('#bookCate option:selected').val();
+        var pCateName = $('#bookCate option:selected').text();
+        var pBookUrl = $('#linkUrl').val();
+        var pPdfUrl = $('#PdfUrl').val();
+        var pAudioUrl = $('#audioUrl').val();
+        var pVideoUrl = $('#videoUrl').val();
         var pPublish = $("#publishdate").val();
-        var pCate = $("#videocate").val();
-        var pId = $("#videoId").val();
-        var dataList = {Id:pId, title: pTitle, url: pUrl, publishDate: pPublish, videoCate: pCate, description: pDescription};
+        var pBookDescription = $("#bookDescription").val();
+        var pId = $("#bookId").val();
+        var dataList = {Id:pId
+                        , title: pTitle
+                        , authorId: pAuthorId
+                        , authorName: pAuthorName
+                        , cateId: pCateId
+                        , cateName: pCateName
+                        , bookUrl: pBookUrl
+                        , pdfUrl: pPdfUrl
+                        , audioUrl: pAudioUrl
+                        , videoUrl: pVideoUrl
+                        , publish: pPublish
+                        , description: pBookDescription
+                        , content: pContent
+                      };
+        console.log(dataList);
         if(pId != "" && pId != null){
             console.log(dataList);
             Update_Video(dataList);
         }else{
-            Insert_Video(dataList);
+            Insert_Book(dataList);
         }
       }
   }
@@ -44,22 +65,22 @@ jQuery(document).ready( function(jQuery){
       });
   }
 
-  function Insert_Video(dataList){
+  function Insert_Book(dataList){
     jQuery.ajax({
         url: ajax_object.ajaxurl,
         type: 'POST',
         data: { 
-          action: 'insertvideosadminaction',
+          action: 'insertbookadminaction',
           data: dataList
         },
         success: function(data){
-            if(data == 0 || data == "0"){
+            console.log(data);
+            /*if(data == 0 || data == "0"){
                 alert("update failed");
             }else{
                 $("#videoList").html(data);
                 CancelUpdate();
-            }
-          console.log(data);
+            }*/
         }
       });
       return false;
@@ -85,7 +106,7 @@ jQuery(document).ready( function(jQuery){
       return false;
   }
 
-  function IsValidate_Insert_Video_Form(){
+  function IsValidate_Insert_Book_Form(){
         $isValid = false;
 
         if($("#videotitle").val() == ""){
@@ -115,7 +136,7 @@ jQuery(document).ready( function(jQuery){
         return $isValid;
   }
 
-  function AddNewVideo(){
+  function AddNewBook(){
     ResetVideoForm();
     $(".video-list").css("display","none");
     $(".videos-form").fadeIn("fast");

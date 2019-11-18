@@ -13,7 +13,7 @@ require_once('controllers/add-books-controller.php');
 add_action('admin_menu', 'add_books_admin_plugin');
  
 function add_books_admin_plugin(){
-        add_menu_page( 'Thêm sách', 'Thêm sách', 'edit_posts', 'books-management-plugin', 'add_books_management_init' );
+        add_menu_page( 'Books', 'Books', 'edit_posts', 'books-management-plugin', 'add_books_management_init', 'dashicons-book-alt' );
 }
 
 
@@ -39,25 +39,25 @@ function add_books_management_init(){
 	?>
 	<h3>Thêm sách</h3>
 	<!-- Form to handle the upload - The enctype value here is very important -->
-    <div class="container videos-form">
+    <div class="container videos-form" style="display:none;">
         <div class="form-group row">
-            <label for="videotitle" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Title</label>
+            <label for="booktitle" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control-lg w-100" id="videotitle" value="">
-                <input type="hidden" id="videoId">
+                <input type="text" class="form-control-lg w-100" id="booktitle" value="">
+                <input type="hidden" id="bookId">
             </div>
         </div>
         <div class="form-group row">
-            <label for="videocate" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Category</label>
+            <label for="author" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Author</label>
             <div class="col-sm-10">
-                <select id="videocate" class="form-control-lg w-100">
-                    <option value="0">--Choose video category--</option>
+                <select id="author" class="form-control-lg w-100">
+                    <option value="0">--Choose Author--</option>
                     <?php
-                        $cateList = get_video_categories_Controller();
-                        if(count($cateList) > 0){
-                            foreach($cateList as &$value){
+                        $authList = get_author_list();
+                        if(count($authList) > 0){
+                            foreach($authList as &$value){
                                 ?>
-                                    <option value="<?php echo $value -> Id ?>"><?php echo $value -> Name ?></option>
+                                    <option style="text-transform: capitalize;" value="<?php echo $value -> Id ?>"><?php echo $value -> AuthorName ?></option>
                                 <?php
                             }
                         }
@@ -66,15 +66,58 @@ function add_books_management_init(){
             </div>
         </div>
         <div class="form-group row">
-            <label for="videourl" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Link/Url</label>
+            <label for="bookCate" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Category</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control-lg w-100" id="videourl" value="">
+                <select id="bookCate" class="form-control-lg w-100">
+                    <option value="0">--Choose book category--</option>
+                    <?php
+                        $cateList = get_book_category_list();
+                        if(count($cateList) > 0){
+                            foreach($cateList as &$value){
+                                ?>
+                                    <option style="text-transform: capitalize;" value="<?php echo $value -> Id ?>"><?php echo $value -> Category ?></option>
+                                <?php
+                            }
+                        }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="linkUrl" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Link/Url</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control-lg w-100" id="linkUrl" value="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="PdfUrl" class="col-sm-2 col-form-label d-flex justify-content-end form-label">PDF link</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control-lg w-100" id="PdfUrl" value="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="AudioUrl" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Audio link</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control-lg w-100" id="audioUrl" value="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="videoUrl" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Video Link</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control-lg w-100" id="videoUrl" value="">
             </div>
         </div>
         <div class="form-group row">
             <label for="publishdate" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Publish date</label>
             <div class="col-sm-10">
                 <input type="date" keypress="false" class="form-control-lg w-100" id="publishdate">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="publishdate" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea id="bookDescription" rows="4" class="form-control-lg w-100">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                </textarea>
             </div>
         </div>
         <!--<div class="form-group row">
@@ -87,11 +130,11 @@ function add_books_management_init(){
             </div>
         </div>-->
         <div class="form-group row">
-            <label for="videodescription" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Short description</label>
+            <label for="bookcontent" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Content</label>
             <div class="col-sm-10">
 	<?php
 			$settings = array(
-				'textarea_name' => 'videodescription',
+				'textarea_name' => 'bookcontent',
                 'media_buttons' => true,
                 'editor_height' => 425, // In pixels, takes precedence and has no default value
                 'textarea_rows' => 20,
@@ -111,7 +154,7 @@ function add_books_management_init(){
             <div class="col-12">
                 <div class="content-widget d-flex justify-content-end">
                     <button class="btn btn-default mr-2" onClick="CancelUpdate()">Cancel</button>
-                    <button class="btn btn-success" onClick="getVideoInfo()">Submit</button>
+                    <button class="btn btn-success" onClick="getBookInfo()">Save</button>
                     <div class="display-post"></div>
                 </div>
             </div>
@@ -121,7 +164,7 @@ function add_books_management_init(){
         <div class="form-group row">
             <div class="col-12">
                 <div class="content-widget d-flex justify-content-start">
-                    <button class="btn btn-success" onClick="AddNewVideo()">Add new</button>
+                    <button class="btn btn-success" onClick="AddNewBook()">Add new</button>
                 </div>
             </div>
         </div>
@@ -183,10 +226,11 @@ function Insert_videos_test($name, $age){
     echo "videos name is ". $name ." and I am ".$age ." year old." ;
 }
 
-function Insert_videos($data){
-    print_r($data['publishDate']);
+function Insert_book($data){
+    echo "videos name is ". $data['content'] ." and I am ".$data['title']  ." year old." ;
+    //print_r(json_encode($data));
 
-    $video = "(
+    /*$video = "(
         '" . $data['title'] . "'
         ,'" . 1 . "'
         ,'" . $data['description'] . "'
@@ -202,7 +246,7 @@ function Insert_videos($data){
         LoadVideoList();
     }else{
         print_r(0);
-    }
+    }*/
 }
 
 function Get_Video_By_Id($Id){
