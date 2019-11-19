@@ -107,12 +107,12 @@ function add_books_management_init(){
                 <input type="text" class="form-control-lg w-100" id="videoUrl" value="">
             </div>
         </div>
-        <div class="form-group row">
+        <!--<div class="form-group row">
             <label for="publishdate" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Publish date</label>
             <div class="col-sm-10">
                 <input type="date" keypress="false" class="form-control-lg w-100" id="publishdate">
             </div>
-        </div>
+        </div>-->
         <div class="form-group row">
             <label for="publishdate" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Description</label>
             <div class="col-sm-10">
@@ -170,12 +170,12 @@ function add_books_management_init(){
         </div>
         <div class="form-group row">
             <div class="col-sm-12">
-                <table class="table" id="videoList">
+                <table class="table" id="BookList">
                     <thead class="thead-dark">
                         <tr>
                             <th>No.</th>
                             <th>Title</th>
-                            <th>Status</th>
+                            <th>Active</th>
                             <th>Url</th>
                             <th>Description</th>
                             <!--<th>Publish date</th>-->
@@ -185,21 +185,21 @@ function add_books_management_init(){
                     </thead>
                     <tbody>
                         <?php 
-                            $videosList = get_videos_Controller();
-                            if(count($videosList) > 0){
+                            $bookList = get_book_list_controller();
+                            if(count($bookList) > 0){
                                 $countNo = 1;
-                                foreach($videosList as &$value){
+                                foreach($bookList as &$value){
                                     ?>
                                         <tr>
                                             <td scope="row"><?php echo $countNo ?></td>
-                                            <td><?php echo $value -> Title ?></td>
-                                            <td><?php if($value -> Status == 1){echo "active";}else{echo "deactive";} ?></td>
-                                            <td><?php echo $value -> Url ?></td>
-                                            <td><?php echo substr($value -> Description, 0,100) . "..." ?></td>
+                                            <td style="width:200px;"><?php echo $value -> Title ?></td>
+                                            <td><?php if($value -> IsActive == 1){echo "active";}else{echo "deactive";} ?></td>
+                                            <td><a href="<?php echo $value -> OriginalLink ?>"><?php echo substr($value -> OriginalLink, 0,30) . "..." ?></a></td>
+                                            <td><?php echo substr($value -> Description, 0,30) . "..." ?></td>
                                             <td><?php echo date_format(date_create($value -> UpdateDate),"d/m/Y") ?></td>
-                                            <td>
-                                                <button class="btn btn-warning" onClick="GetVideoForEdit(<?php echo $value -> Id ?>)">Edit</button>
-                                                <button class="btn btn-danger" onClick="DeleteVideo(<?php echo $value -> Id ?>)">Delete</button>
+                                            <td style="width:130px; text-align:center;">
+                                                <button class="btn btn-sm btn-warning" onClick="GetVideoForEdit(<?php echo $value -> Id ?>)">Edit</button>
+                                                <button class="btn btn-sm btn-danger" onClick="DeleteVideo(<?php echo $value -> Id ?>)">Delete</button>
                                             </td>
                                         </tr>
                                     <?php
@@ -227,26 +227,35 @@ function Insert_videos_test($name, $age){
 }
 
 function Insert_book($data){
-    echo "videos name is ". $data['content'] ." and I am ".$data['title']  ." year old." ;
+    //echo "videos name is ". $data['content'] ." and I am ".$data['title']  ." year old." ;
     //print_r(json_encode($data));
-
-    /*$video = "(
+    $book = "(
         '" . $data['title'] . "'
-        ,'" . 1 . "'
         ,'" . $data['description'] . "'
-        ,'" . $data['url'] . "'
-        ,'" . $data['videoCate'] . "'
+        ,'" . $data['content'] . "'
+        ,'" . $data['bookUrl'] . "'
+        ,'" . $data['pdfUrl'] . "'
+        ,'" . $data['pdfUrl'] . "'
+        ,'" . $data['audioUrl'] . "'
+        ,'" . $data['videoUrl'] . "'
+        ,'" . $data['authorId'] . "'
+        ,'" . $data['authorName'] . "'
+        ,'" .current_time('mysql'). "'
+        ,'" .current_time('mysql'). "'
+        ,'" . $data['cateId'] . "'
         ,'" .NULL. "'
-        ,'" .$data['publishDate']. "'
-        ,'" .current_time('mysql'). "'
-        ,'" .current_time('mysql'). "'
+        ,'" .NULL. "'
+        ,'" .NULL. "'
+        ,'" . 1 . "'
+        ,'" . 1 . "'
     )";
-    $result = insert_video_Controller($video);
+    
+    $result = insert_book_controller($book);
     if($result == 1 || $result == "1"){
-        LoadVideoList();
+        LoadBookList();
     }else{
         print_r(0);
-    }*/
+    }
 }
 
 function Get_Video_By_Id($Id){
@@ -257,29 +266,29 @@ function Get_Video_By_Id($Id){
 function UpdateVideo($VideoData){
     $result = Update_Video_By_Id_Controller($VideoData);
     if($result == 1 || $result == "1"){
-        LoadVideoList();
+        //echo "Save result is ". $result ;
+        LoadBookList();
     }else{
         print_r(0);
     }
 }
 
-function LoadVideoList(){
-    $videosList = get_videos_Controller();
-    if(count($videosList) > 0){
+function LoadBookList(){
+    $bookList = get_book_list_controller();
+    if(count($bookList) > 0){
         $countNo = 1;
-        foreach($videosList as &$value){
+        foreach($bookList as &$value){
             ?>
                 <tr>
                     <td scope="row"><?php echo $countNo ?></td>
                     <td><?php echo $value -> Title ?></td>
-                    <td><?php if($value -> Status == 1){echo "active";}else{echo "deactive";} ?></td>
-                    <td><?php echo $value -> Url ?></td>
-                    <td><?php echo $value -> Description ?></td>
-                    <!--<td><?php /*echo $value -> PublishDate*/ ?></td>-->
+                    <td><?php if($value -> IsActive == 1){echo "active";}else{echo "deactive";} ?></td>
+                    <td><?php echo $value -> OriginalLink ?></td>
+                    <td><?php echo substr($value -> Description, 0,100) . "..." ?></td>
                     <td><?php echo date_format(date_create($value -> UpdateDate),"d/m/Y") ?></td>
-                    <td>
-                        <button class="btn btn-warning" onClick="GetVideoForEdit(<?php echo $value -> Id ?>)">Edit</button>
-                        <button class="btn btn-danger" onClick="DeleteVideo(<?php echo $value -> Id ?>)">Delete</button>
+                    <td style="min-width:120px; text-align:center;">
+                        <button class="btn btn-sm btn-warning" onClick="GetVideoForEdit(<?php echo $value -> Id ?>)">Edit</button>
+                        <button class="btn btn-sm btn-danger" onClick="DeleteVideo(<?php echo $value -> Id ?>)">Delete</button>
                     </td>
                 </tr>
             <?php
@@ -288,7 +297,7 @@ function LoadVideoList(){
     }else{
         ?>
             <tr>
-                <td colspan="7" style="text-align: center;">No video</td>
+                <td colspan="7" style="text-align: center;">Chưa có sách</td>
             </tr>
         <?php
     }

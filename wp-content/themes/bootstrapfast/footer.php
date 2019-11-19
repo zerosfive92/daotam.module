@@ -51,9 +51,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bootstrapfast' ) ); ?>"><?php printf( esc_html( 'Proudly powered by %s', 'bootstrapfast' ), 'WordPress' ); ?></a>
-				<span class="sep"> | </span>
-				<?php printf( esc_html( 'Theme: %1$s by %2$s.', 'bootstrapfast' ), 'BootStrapFast', '<a href="https://carl.alber2.com/" rel="designer">Carl Alberto</a>' ); ?>
+				<span>DaoTam 2019</span>
 			</div><!-- .col-12 -->
 		</div>
 	</footer><!-- #colophon -->

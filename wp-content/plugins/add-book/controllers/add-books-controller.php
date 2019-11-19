@@ -1,27 +1,42 @@
 <?php
 
-function insert_video_Controller($videoData){
+function insert_book_controller($bookInfo){
     global $wpdb;
-	$table_name = $wpdb->prefix . "videos"; 
+	$table_name = $wpdb->prefix . "books"; 
 
     $query = "
         INSERT INTO 
         `".$table_name."`(
-             `Title`
-            , `Status`
+            `Title`
             , `Description`
-            , `Url`
-            , `CategoryId`
             , `Content`
-            , `PublishDate`
+            , `OriginalLink`
+            , `PdfFile`
+            , `OriginalPdfFile`
+            , `AudioFile`
+            , `VideoFile`
+            , `Author`
+            , `AuthorName`
             , `CreateDate`
             , `UpdateDate`
-            ) VALUES " .$videoData;
-
+            , `CategoryId`
+            , `KindId`
+            , `DomainId`
+            , `Type`
+            , `Status`
+            , `IsActive`
+            ) VALUES " .$bookInfo;
     //print_r($query);
-    $videos_save = $wpdb->query($query);
+    $book_save = $wpdb->query($query);
     
-    return $videos_save;
+    return $book_save;
+}
+
+function get_book_list_controller(){
+	global $wpdb;
+	$table_name = $wpdb->prefix . "books"; 
+	$getresults = $wpdb->get_results( "SELECT * FROM $table_name WHERE Status = 1 AND IsActive = 1 " );
+	return $getresults;
 }
 
 function get_videos_Controller(){

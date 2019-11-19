@@ -22,7 +22,7 @@ jQuery(document).ready( function(jQuery){
         var pPdfUrl = $('#PdfUrl').val();
         var pAudioUrl = $('#audioUrl').val();
         var pVideoUrl = $('#videoUrl').val();
-        var pPublish = $("#publishdate").val();
+        //var pPublish = $("#publishdate").val();
         var pBookDescription = $("#bookDescription").val();
         var pId = $("#bookId").val();
         var dataList = {Id:pId
@@ -35,11 +35,11 @@ jQuery(document).ready( function(jQuery){
                         , pdfUrl: pPdfUrl
                         , audioUrl: pAudioUrl
                         , videoUrl: pVideoUrl
-                        , publish: pPublish
+                        //, publish: pPublish
                         , description: pBookDescription
                         , content: pContent
                       };
-        console.log(dataList);
+        //console.log(dataList);
         if(pId != "" && pId != null){
             console.log(dataList);
             Update_Video(dataList);
@@ -75,12 +75,12 @@ jQuery(document).ready( function(jQuery){
         },
         success: function(data){
             console.log(data);
-            /*if(data == 0 || data == "0"){
+            if(data == 0 || data == "0"){
                 alert("update failed");
             }else{
-                $("#videoList").html(data);
+                $("#BookList").html(data);
                 CancelUpdate();
-            }*/
+            }
         }
       });
       return false;
@@ -109,28 +109,21 @@ jQuery(document).ready( function(jQuery){
   function IsValidate_Insert_Book_Form(){
         $isValid = false;
 
-        if($("#videotitle").val() == ""){
-            $("#videotitle").focus();
-            $("#videotitle").addClass("error-text-form");
+        if($("#booktitle").val() == ""){
+            $("#booktitle").focus();
+            $("#booktitle").addClass("error-text-form");
         }else{
-            $("#videotitle").removeClass("error-text-form");
+            $("#booktitle").removeClass("error-text-form");
         }
 
-        if($("#videourl").val() == ""){
-            $("#videourl").focus();
-            $("#videourl").addClass("error-text-form");
+        if($("#linkUrl").val() == ""){
+            $("#linkUrl").focus();
+            $("#linkUrl").addClass("error-text-form");
         }else{
-            $("#videourl").removeClass("error-text-form");
+            $("#linkUrl").removeClass("error-text-form");
         }
 
-        if($("#publishdate").val() == ""){
-            $("#publishdate").focus();
-            $("#publishdate").addClass("error-text-form");
-        }else{
-            $("#publishdate").removeClass("error-text-form");
-        }
-
-        if($("#videotitle").val() != "" && $("#videourl").val() != "" && $("#publishdate").val() != ""){
+        if($("#booktitle").val() != "" && $("#linkUrl").val() != ""){
             $isValid = true;
         }
         return $isValid;
