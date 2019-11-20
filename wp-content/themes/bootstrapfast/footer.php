@@ -11,7 +11,7 @@
 			</div><!-- #contennt -->
 		</div><!-- .row -->
 	</div><!-- .container -->
-	<footer id="colophon" class="site-footer <?php echo esc_attr( bootstrapfast_container_type() ); ?>" role="contentinfo">
+	<footer id="colophon" class="site-footer container-fluid" role="contentinfo">
 		<div class="row">
 			<?php
 
@@ -51,7 +51,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<span>DaoTam 2019</span>
+				<span>Đạo Tâm 2019</span>
 			</div><!-- .col-12 -->
 		</div>
 	</footer><!-- #colophon -->

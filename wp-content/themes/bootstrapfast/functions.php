@@ -204,6 +204,11 @@ require get_template_directory() . '/inc/class-jsonmanifest.php';
  */
 require get_template_directory() . '/inc/icon-functions.php';
 
+/**
+ * Custom style
+ */
+wp_enqueue_style ('theme-style', get_template_directory_uri().'/assets/css/customstyle.css');
+wp_enqueue_style ('my-style', get_template_directory_uri().'/css/customstyle.css', array('theme-style'));
 
 /**
  * Custom ajax 

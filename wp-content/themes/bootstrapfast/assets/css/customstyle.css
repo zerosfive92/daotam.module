@@ -1,0 +1,16 @@
+body{
+    background: #E8E8E8 !important;
+}
+body > div.container{
+    min-height: 100vh;
+    background: #FFF;
+    padding-bottom: 30px;
+}
+footer.site-footer
+{
+    border-top: 1px solid #b5b5b5;
+    position: fixed;
+    bottom: 0;
+    background: #ddbb85;
+    color: #FFF;
+}
