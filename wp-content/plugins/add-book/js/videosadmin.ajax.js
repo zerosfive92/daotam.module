@@ -14,6 +14,7 @@ jQuery(document).ready( function(jQuery){
       if(IsValidate_Insert_Book_Form()){
         var pContent = tinymce.activeEditor.getContent();
         var pTitle = $('#booktitle').val();
+        var pChar = $('#bookChar').val();
         var pAuthorId = $('#author option:selected').val();
         var pAuthorName = $('#author option:selected').text();
         var pCateId = $('#bookCate option:selected').val();
@@ -27,6 +28,7 @@ jQuery(document).ready( function(jQuery){
         var pId = $("#bookId").val();
         var dataList = {Id:pId
                         , title: pTitle
+                        , char: pChar
                         , authorId: pAuthorId
                         , authorName: pAuthorName
                         , cateId: pCateId
@@ -99,7 +101,7 @@ jQuery(document).ready( function(jQuery){
                 alert("update failed");
             }else{
                 $("#videoList tbody").html(data);
-                CancelUpdate();
+                //CancelUpdate();
             }
         }
       });

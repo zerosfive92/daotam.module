@@ -13,7 +13,22 @@ require_once('controllers/search-books-controller.php');
 
 if(!function_exists('plugin_search_books')){
 	function plugin_search_books(){
-			$postlist = get_book_list();
+		$pChar = $_GET['char'];
+			?>
+			<div class="search-book_header col medium-12 text-center mb-3"><a href="<?php echo get_page_link(8).'?char=A' ?>">A</a> | 
+			<a href="<?php echo get_page_link(8).'?char=B' ?>">B</a> | 
+			<a href="<?php echo get_page_link(8).'?char=C' ?>">C</a> | <a>D</a> | <a>Đ</a> | <a>E</a> | <a>G</a> | <a>H | <a>K</a> | <a>L</a> | <a>M</a> | <a>N</a> | <a>O</a> | <a>P</a> | <a>Q</a> | <a>R</a> | <a>S</a> | <a>T</a> | <a>U</a> | <a>V</a> | <a>X</a> | <a>Y</a></div>
+			<?php
+			$postlist;
+			if(empty($pChar)){
+				$postlist = get_book_list();
+			}else{
+				$char = substr($pChar, 0,1);
+				$postlist = get_book_list_by_Char($char);
+				?>
+				<div class="col medium-12 text-center"><h1><?php echo $char ?></h1></div>
+				<?php
+			}
 			$html = '<div class="col medium-8 small-12 large-8">';
 			foreach($postlist as &$value){
 				$bookIdEncrypt = encrypt_decrypt('encrypt', $value -> Id);

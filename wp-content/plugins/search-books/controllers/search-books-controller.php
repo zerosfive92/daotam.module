@@ -6,6 +6,14 @@ function get_book_list(){
 	return $getresults;
 }
 
+function get_book_list_by_Char($char){
+	global $wpdb;
+	$table_name = $wpdb->prefix . "books"; 
+	$getresults = $wpdb->get_results( "SELECT * FROM $table_name WHERE `Char` ='".$char."'" );
+	//print_r("SELECT * FROM $table_name WHERE `Char` ='".$char."'");
+	return $getresults;
+}
+
 function get_book_by_id($bookId){
 	global $wpdb;
 	$table_name = $wpdb->prefix . "books"; 

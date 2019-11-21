@@ -14,3 +14,16 @@ footer.site-footer
     background: #ddbb85;
     color: #FFF;
 }
+
+.search-book_header
+{
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: unset;
+    cursor: pointer;
+}
+
+.side-bar-content
+{
+    font-size: 13px;
+}

@@ -8,6 +8,7 @@ function insert_book_controller($bookInfo){
         INSERT INTO 
         `".$table_name."`(
             `Title`
+            ,`Character`
             , `Description`
             , `Content`
             , `OriginalLink`
@@ -26,7 +27,7 @@ function insert_book_controller($bookInfo){
             , `Status`
             , `IsActive`
             ) VALUES " .$bookInfo;
-    //print_r($query);
+    print_r($query);
     $book_save = $wpdb->query($query);
     
     return $book_save;

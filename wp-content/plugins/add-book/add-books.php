@@ -48,6 +48,13 @@ function add_books_management_init(){
             </div>
         </div>
         <div class="form-group row">
+            <label for="bookChar" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Character</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control-lg w-100" id="bookChar" value="">
+                <input type="hidden" id="bookId">
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="author" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Author</label>
             <div class="col-sm-10">
                 <select id="author" class="form-control-lg w-100">
@@ -116,7 +123,7 @@ function add_books_management_init(){
         <div class="form-group row">
             <label for="publishdate" class="col-sm-2 col-form-label d-flex justify-content-end form-label">Description</label>
             <div class="col-sm-10">
-                <textarea id="bookDescription" rows="4" class="form-control-lg w-100">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                <textarea id="bookDescription" rows="4" class="form-control-lg w-100">
                 </textarea>
             </div>
         </div>
@@ -177,7 +184,7 @@ function add_books_management_init(){
                             <th>Title</th>
                             <th>Active</th>
                             <th>Url</th>
-                            <th>Description</th>
+                            <th>Character</th>
                             <!--<th>Publish date</th>-->
                             <th>Update date</th>
                             <th>Tools</th>
@@ -195,7 +202,7 @@ function add_books_management_init(){
                                             <td style="width:200px;"><?php echo $value -> Title ?></td>
                                             <td><?php if($value -> IsActive == 1){echo "active";}else{echo "deactive";} ?></td>
                                             <td><a href="<?php echo $value -> OriginalLink ?>"><?php echo substr($value -> OriginalLink, 0,30) . "..." ?></a></td>
-                                            <td><?php echo substr($value -> Description, 0,30) . "..." ?></td>
+                                            <td><?php echo $value -> Character ?></td>
                                             <td><?php echo date_format(date_create($value -> UpdateDate),"d/m/Y") ?></td>
                                             <td style="width:130px; text-align:center;">
                                                 <button class="btn btn-sm btn-warning" onClick="GetVideoForEdit(<?php echo $value -> Id ?>)">Edit</button>
@@ -231,6 +238,7 @@ function Insert_book($data){
     //print_r(json_encode($data));
     $book = "(
         '" . $data['title'] . "'
+        ,'" . $data['char'] . "'
         ,'" . $data['description'] . "'
         ,'" . $data['content'] . "'
         ,'" . $data['bookUrl'] . "'
@@ -284,7 +292,7 @@ function LoadBookList(){
                     <td><?php echo $value -> Title ?></td>
                     <td><?php if($value -> IsActive == 1){echo "active";}else{echo "deactive";} ?></td>
                     <td><?php echo $value -> OriginalLink ?></td>
-                    <td><?php echo substr($value -> Description, 0,100) . "..." ?></td>
+                    <td><?php echo $value -> Character ?></td>
                     <td><?php echo date_format(date_create($value -> UpdateDate),"d/m/Y") ?></td>
                     <td style="min-width:120px; text-align:center;">
                         <button class="btn btn-sm btn-warning" onClick="GetVideoForEdit(<?php echo $value -> Id ?>)">Edit</button>
