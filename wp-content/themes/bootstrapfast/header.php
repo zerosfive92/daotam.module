@@ -55,9 +55,9 @@
 					}
 					?>
 				</div>
-
+				<div class="row">
 				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'bootstrapfast' ); ?></button>
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'bootstrapfast' ); ?></button>
 					<?php
 					wp_nav_menu( array(
 						'theme_location' => 'menu-1',
@@ -65,6 +65,7 @@
 					));
 					?>
 				</nav><!-- #site-navigation -->
+				</div>
 			</header><!-- #masthead -->
 
 			<div id="content" class="container site-content col-xs-12 <?php echo esc_attr( bootstrapfast_main_body_style() ); ?>">

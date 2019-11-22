@@ -21,7 +21,7 @@ if(!function_exists('plugin_side_bar_books')){
             if(count($authList) > 0){
                 foreach($authList as &$value){
                     ?>
-                        <div class="side-bar-content" data-value="<?php echo $value -> Id ?>"><a href="<?php echo get_page_link(8).'?char='.$value -> Char.'&auth='.$value -> Id ?>"><?php echo $value -> AuthorName ?></a></div>
+                        <div class="side-bar-content" data-value="<?php echo $value -> Id ?>"> - <a href="<?php echo get_page_link(8).'?char='.$value -> Char.'&auth='.$value -> Id ?>"><?php echo $value -> AuthorName ?></a></div>
                     <?php
                 }
             }
@@ -36,7 +36,7 @@ if(!function_exists('plugin_side_bar_books')){
             if(count($cateList) > 0){
                 foreach($cateList as &$value){
                     ?>
-                        <div class="side-bar-content" data-value="<?php echo $value -> Id ?>"><a href="<?php echo get_page_link(8).'?char='.$value -> Char.'&cate='.$value -> Id ?>"><?php echo $value -> Category ?></a></div>
+                        <div class="side-bar-content" data-value="<?php echo $value -> Id ?>"> - <a href="<?php echo get_page_link(8).'?char='.$value -> Char.'&cate='.$value -> Id ?>"><?php echo $value -> Category ?></a></div>
                     <?php
                 }
             }

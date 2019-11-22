@@ -15,9 +15,30 @@ if(!function_exists('plugin_search_books')){
 	function plugin_search_books(){
 		$pChar = $_GET['char'];
 			?>
-			<div class="search-book_header col medium-12 text-center mb-3"><a href="<?php echo get_page_link(8).'?char=A' ?>">A</a> | 
-			<a href="<?php echo get_page_link(8).'?char=B' ?>">B</a> | 
-			<a href="<?php echo get_page_link(8).'?char=C' ?>">C</a> | <a>D</a> | <a>Đ</a> | <a>E</a> | <a>G</a> | <a>H | <a>K</a> | <a>L</a> | <a>M</a> | <a>N</a> | <a>O</a> | <a>P</a> | <a>Q</a> | <a>R</a> | <a>S</a> | <a>T</a> | <a>U</a> | <a>V</a> | <a>X</a> | <a>Y</a></div>
+			<div class="search-book_header col medium-12 text-center mb-3">
+				<a href="<?php echo get_page_link(8).'?char=A' ?>">A</a> | 
+				<a href="<?php echo get_page_link(8).'?char=B' ?>">B</a> | 
+				<a href="<?php echo get_page_link(8).'?char=C' ?>">C</a> | 
+				<a href="<?php echo get_page_link(8).'?char=D' ?>">D</a> | 
+				<a href="<?php echo get_page_link(8).'?char=Đ' ?>">Đ</a> | 
+				<a href="<?php echo get_page_link(8).'?char=E' ?>">E</a> | 
+				<a href="<?php echo get_page_link(8).'?char=G' ?>">G</a> | 
+				<a href="<?php echo get_page_link(8).'?char=H' ?>">H</a> | 
+				<a href="<?php echo get_page_link(8).'?char=K' ?>">K</a> | 
+				<a href="<?php echo get_page_link(8).'?char=L' ?>">L</a> | 
+				<a href="<?php echo get_page_link(8).'?char=M' ?>">M</a> | 
+				<a href="<?php echo get_page_link(8).'?char=N' ?>">N</a> | 
+				<a href="<?php echo get_page_link(8).'?char=O' ?>">O</a> | 
+				<a href="<?php echo get_page_link(8).'?char=P' ?>">P</a> | 
+				<a href="<?php echo get_page_link(8).'?char=Q' ?>">Q</a> | 
+				<a href="<?php echo get_page_link(8).'?char=R' ?>">R</a> | 
+				<a href="<?php echo get_page_link(8).'?char=S' ?>">S</a> | 
+				<a href="<?php echo get_page_link(8).'?char=T' ?>">T</a> | 
+				<a href="<?php echo get_page_link(8).'?char=U' ?>">U</a> | 
+				<a href="<?php echo get_page_link(8).'?char=V' ?>">V</a> | 
+				<a href="<?php echo get_page_link(8).'?char=X' ?>">X</a> | 
+				<a href="<?php echo get_page_link(8).'?char=Y' ?>">Y</a>
+			</div>
 			<?php
 			$postlist;
 			if(empty($pChar)){
@@ -34,12 +55,13 @@ if(!function_exists('plugin_search_books')){
 				$bookIdEncrypt = encrypt_decrypt('encrypt', $value -> Id);
 				$html .= '<div style="margin-bottom:15px; border-bottom: 1px solid gray">';
 				$html .= '<div style="font-weight:bold; font-size:16px; margin-bottom:5px;">';
-				$html .= '<a style="font-weight:bold; font-size:13px; margin-bottom:5px;" href="'.get_page_link(10).'?book='. $bookIdEncrypt .'">';
+				//$html .= '<a style="font-weight:bold; font-size:13px; margin-bottom:5px;" href="'.get_page_link(10).'?book='. $bookIdEncrypt .'">';
+				$html .= '<a style="font-weight:bold; font-size:13px; margin-bottom:5px;" target="_blank" href="'. $value -> OriginalLink .'">';
 				$html .= $value -> Title;
 				$html .= '</a>';
 				$html .= '</div>';
-				$html .= '<div style="font-size:13px; margin-bottom:5px;">';
-				$html .= $value -> CreateDate;
+				$html .= '<div style="font-size:12px; margin-bottom:5px; color:#868e96;">';
+				$html .= $value -> AuthorName.' | '.date_format(date_create($value -> CreateDate), 'd-m-Y');
 				$html .= '</div>';
 				$html .= '</div>';
 			}

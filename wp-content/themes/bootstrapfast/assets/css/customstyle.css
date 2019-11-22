@@ -27,3 +27,32 @@ footer.site-footer
 {
     font-size: 13px;
 }
+
+.home .site-branding .site-title
+{
+    padding-top:10px;
+    margin-bottom: 2px;
+}
+.home .site-branding .site-description{
+    color: #FFF;
+    font-size: 16px;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+.home .site-branding .site-title a
+{
+    font-size: 32px;
+    font-weight: bold;
+}
+.main-navigation
+{
+    background: #b7996a;
+    padding-top:2px;
+    padding-bottom:2px;
+}
+.menu-toggle
+{
+    background: unset;
+    cursor: pointer;
+    font-size: 14px;
+}
